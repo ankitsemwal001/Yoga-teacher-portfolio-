@@ -68,6 +68,9 @@ const Experience = () => {
                 }`}
             >
 
+              {/* Center Timeline Dot */}
+              <div className="absolute left-1/2 top-2 hidden h-3 w-3 -translate-x-1/2 rounded-full bg-[#8C6A43] ring-4 ring-[#EEE7DD] lg:block" />
+
               {/* Image */}
 
               <div className="group overflow-hidden rounded-3xl">
@@ -75,7 +78,7 @@ const Experience = () => {
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="h-[440px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="aspect-square md:aspect-video w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
 
               </div>
@@ -83,10 +86,6 @@ const Experience = () => {
               {/* Content */}
 
               <div className="relative">
-
-                {/* Dot */}
-
-                <div className="absolute -left-[73px] top-2 hidden h-4 w-4 rounded-full bg-[#8C6A43] ring-[6px] ring-[#EEE7DD] lg:block" />
 
                 <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#8C6A43]">
                   {item.year}

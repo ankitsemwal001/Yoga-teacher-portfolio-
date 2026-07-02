@@ -11,40 +11,15 @@ const Header = () => {
                 </a>
 
                 <nav className="hidden items-center gap-8 lg:flex">
-                    <a
-                        href="#about"
-                        className="text-sm font-medium text-[#1F1F1F] transition-colors duration-200 hover:text-[#8C6A43]"
-                    >
-                        About
-                    </a>
-
-                    <a
-                        href="#services"
-                        className="text-sm font-medium text-[#1F1F1F] transition-colors duration-200 hover:text-[#8C6A43]"
-                    >
-                        Services
-                    </a>
-
-                    <a
-                        href="#experience"
-                        className="text-sm font-medium text-[#1F1F1F] transition-colors duration-200 hover:text-[#8C6A43]"
-                    >
-                        Experience
-                    </a>
-
-                    <a
-                        href="#gallery"
-                        className="text-sm font-medium text-[#1F1F1F] transition-colors duration-200 hover:text-[#8C6A43]"
-                    >
-                        Gallery
-                    </a>
-
-                    <a
-                        href="#contact"
-                        className="text-sm font-medium text-[#1F1F1F] transition-colors duration-200 hover:text-[#8C6A43]"
-                    >
-                        Contact
-                    </a>
+                    {['About', 'Services', 'Experience', 'Gallery', 'Contact'].map((item) => (
+                        <a
+                            key={item}
+                            href={`#${item.toLowerCase()}`}
+                            className="text-sm font-medium text-[#1F1F1F] transition-all duration-300 hover:text-[#8C6A43] hover:-translate-y-0.5"
+                        >
+                            {item}
+                        </a>
+                    ))}
                 </nav>
 
                 <button className="rounded-full bg-[#8C6A43] px-5 py-2.5 text-sm font-medium text-white transition-colors duration-200 hover:bg-[#755632]">

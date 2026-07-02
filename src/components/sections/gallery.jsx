@@ -60,7 +60,7 @@ const Gallery = () => {
 
         {/* Gallery */}
 
-        <div className="mt-16 grid auto-rows-[260px] gap-4 md:grid-cols-3">
+        <div className="mt-16 grid auto-rows-[200px] gap-4 md:auto-rows-[260px] md:grid-cols-3">
 
           {galleryImages.map((image, index) => (
 

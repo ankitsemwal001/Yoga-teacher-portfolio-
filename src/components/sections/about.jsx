@@ -13,56 +13,64 @@ const About = () => {
         >
             <Container>
 
-                <div className="grid items-start gap-12 lg:grid-cols-2">
+                <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
 
                     {/* Image */}
 
-                    <div className="relative">
+                    <div className="w-full">
 
                         <img
                             src={image2}
                             alt="Professional Yoga Teacher"
-                            className="h-[560px] w-full rounded-3xl object-cover"
+                            className="aspect-[4/5] w-full rounded-2xl object-cover lg:aspect-auto lg:h-full"
                         />
 
                     </div>
 
                     {/* Content */}
 
-                    <div>
+                    <div className="flex flex-col justify-between py-1">
 
-                        <SectionHeading
-                            align="left"
-                            title="Sharing the Practice of Yoga with Purpose & Presence"
-                            description="Yoga is more than movement—it's a lifelong journey of self-awareness, balance, and mindful living."
-                        />
+                        <div>
 
-                        <p className="mt-6 text-[17px] leading-relaxed text-[#6B6B6B]">
-                            Through years of teaching and continuous learning,
-                            I have guided students of all levels to build
-                            strength, improve flexibility, reduce stress,
-                            and cultivate inner peace through mindful practice.
-                        </p>
+                            <SectionHeading
+                                align="left"
+                                title="Sharing the Practice of Yoga with Purpose & Presence"
+                                description="Yoga is more than movement—it's a lifelong journey of self-awareness, balance, and mindful living."
+                            />
 
-                        <p className="mt-5 text-[17px] leading-relaxed text-[#6B6B6B]">
-                            My teaching combines traditional yoga philosophy
-                            with modern wellness practices, creating sessions
-                            that are welcoming, accessible, and deeply
-                            transformative for every student.
-                        </p>
+                            <div className="mt-6 space-y-4">
+
+                                <p className="text-base leading-relaxed text-[#6B6B6B]">
+                                    Through years of teaching and continuous learning,
+                                    I have guided students of all levels to build
+                                    strength, improve flexibility, reduce stress,
+                                    and cultivate inner peace through mindful practice.
+                                </p>
+
+                                <p className="text-base leading-relaxed text-[#6B6B6B]">
+                                    My teaching combines traditional yoga philosophy
+                                    with modern wellness practices, creating sessions
+                                    that are welcoming, accessible, and deeply
+                                    transformative for every student.
+                                </p>
+
+                            </div>
+
+                        </div>
 
                         {/* Philosophy Card */}
 
                         <Card
                             hover={false}
-                            className="mt-8 p-8"
+                            className="p-6 mt-8"
                         >
 
-                            <h3 className="font-serif text-2xl text-[#1F1F1F]">
+                            <h3 className="font-serif text-lg text-[#1F1F1F] tracking-tight">
                                 Teaching Philosophy
                             </h3>
 
-                            <p className="mt-4 text-[17px] leading-relaxed text-[#6B6B6B]">
+                            <p className="mt-2 text-base leading-relaxed text-[#6B6B6B]">
                                 Every student is unique. My goal is to create
                                 a calm, supportive environment where people
                                 can grow physically, mentally, and spiritually

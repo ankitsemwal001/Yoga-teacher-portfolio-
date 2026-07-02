@@ -19,7 +19,7 @@ const SectionHeading = ({
     >
 
       {/* Heading */}
-      <h2 className="font-serif text-4xl font-semibold leading-tight tracking-tight text-[#1F1F1F] md:text-[44px] lg:text-5xl">
+      <h2 className="font-serif text-3xl font-semibold leading-tight tracking-tight text-[#1F1F1F] md:text-4xl lg:text-[40px]">
         {title}
       </h2>
 

@@ -46,7 +46,7 @@ const Services = () => {
                     description="Every session is thoughtfully designed to help you build strength, improve flexibility, reduce stress, and create lasting balance in everyday life."
                 />
 
-                <div className="mt-16 grid gap-8 lg:grid-cols-3">
+                <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {services.map((service, index) => (
                         <Card
                             key={index}
@@ -58,13 +58,13 @@ const Services = () => {
                                 <img
                                     src={service.image}
                                     alt={service.title}
-                                    className="h-64 w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                    className="aspect-[2/1] w-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
                             </div>
 
                             {/* Content */}
 
-                            <div className="flex flex-1 flex-col p-8">
+                            <div className="flex flex-1 flex-col p-6">
 
                                 <h3 className="font-serif text-2xl font-semibold text-[#1F1F1F]">
                                     {service.title}

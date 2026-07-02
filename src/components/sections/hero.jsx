@@ -8,7 +8,7 @@ const Hero = () => {
     return (
         <Section
             id="home"
-            className="flex min-h-screen items-center py-20"
+            className="flex min-h-[100svh] items-center"
         >
             <Container>
 
@@ -20,7 +20,7 @@ const Hero = () => {
 
                         {/* Heading */}
 
-                        <h1 className="font-serif text-[44px] font-semibold leading-[1.1] tracking-tight text-[#1F1F1F] md:text-5xl lg:text-[64px]">
+                        <h1 className="font-serif text-4xl font-semibold leading-[1.1] tracking-tight text-[#1F1F1F] md:text-5xl lg:text-[56px]">
                             Transform Your Mind &
                             <br />
                             Body Through Yoga
@@ -95,7 +95,7 @@ const Hero = () => {
                         <img
                             src={image1}
                             alt="Professional Yoga Teacher practicing yoga in nature"
-                            className="h-[600px] w-full max-w-[520px] rounded-3xl object-cover"
+                            className="aspect-[4/5] w-full max-w-[520px] rounded-3xl object-cover"
                         />
 
                     </div>
