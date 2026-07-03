@@ -17,7 +17,7 @@ const About = () => {
 
                     {/* Image */}
 
-                    <div className="w-full">
+                    <div className="hidden w-full md:block">
 
                         <img
                             src={image2}
