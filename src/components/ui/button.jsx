@@ -2,13 +2,13 @@
 
 const variants = {
   primary:
-    "bg-[#8C6A43] text-white hover:bg-[#755632] border border-[#8C6A43]",
+    "bg-[#111111] text-white hover:bg-[#75C5DE] hover:text-[#111111] border border-[#111111]",
 
   outline:
     "bg-transparent text-[#1F1F1F] border border-[#1F1F1F] hover:bg-[#1F1F1F] hover:text-white",
 
   ghost:
-    "bg-transparent text-[#8C6A43] hover:text-[#755632]",
+    "bg-transparent text-[#111111] hover:text-[#397F92]",
 };
 
 const Button = ({
@@ -36,7 +36,7 @@ const Button = ({
         duration-200
         focus:outline-none
         focus:ring-2
-        focus:ring-[#8C6A43]/30
+        focus:ring-[#75C5DE]/40
         disabled:cursor-not-allowed
         disabled:opacity-50
         ${variants[variant]}

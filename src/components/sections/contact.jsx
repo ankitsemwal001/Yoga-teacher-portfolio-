@@ -1,159 +1,59 @@
-import {
-  Mail,
-  Phone,
-  MapPin,
-  AtSign,
-  ArrowRight,
-} from "lucide-react";
+import groupYoga from "../../public/assets/group-yoga.png";
 
-import Section from "../ui/section";
 import Container from "../ui/container";
-import SectionHeading from "../ui/sectionHeading";
-import Card from "../ui/card";
-import Button from "../ui/button";
-
-const contactInfo = [
-  {
-    icon: Mail,
-    title: "Email",
-    value: "hello@yogaportfolio.com",
-  },
-  {
-    icon: Phone,
-    title: "Phone",
-    value: "+91 98765 43210",
-  },
-  {
-    icon: MapPin,
-    title: "Location",
-    value: "Rishikesh, Uttarakhand, India",
-  },
-  {
-    icon: AtSign,
-    title: "Instagram",
-    value: "@yourinstagram",
-  },
-];
+import Section from "../ui/section";
 
 const Contact = () => {
   return (
-    <Section id="contact">
-      <Container>
+    <Section id="contact" background="bg-[#75C5DE]" className="relative overflow-hidden">
+      <div
+        className="pointer-events-none absolute -bottom-8 left-0 font-serif text-[22vw] leading-none text-black/[0.08]"
+        aria-hidden="true"
+      >
+        BEGIN
+      </div>
 
-        <SectionHeading
-          title="Let's Begin Your Yoga Journey"
-          description="Whether you're looking for private sessions, group classes, wellness retreats, or simply want to learn more, I'd love to hear from you."
-        />
+      <Container className="relative grid min-h-[90svh] items-center gap-10 py-20 lg:grid-cols-[1fr_0.9fr] lg:py-28">
+        <div>
+          <p className="mb-5 text-xs font-semibold uppercase tracking-normal text-[#111111]/70">
+            Book a session
+          </p>
 
-        <div className="mt-16 grid items-start gap-8 lg:grid-cols-2">
+          <h2 className="font-serif text-[44px] font-medium leading-none text-[#111111] sm:text-6xl lg:text-[86px]">
+            Let's begin your yoga journey with one calm breath.
+          </h2>
 
-          {/* Contact Info */}
+          <div className="mt-8 grid gap-4 border-y border-black/15 py-7 text-[17px] text-[#111111]/75 md:grid-cols-3">
+            <a href="mailto:hello@yogaportfolio.com" className="hover:text-black">
+              hello@yogaportfolio.com
+            </a>
+            <a href="tel:+919876543210" className="hover:text-black">
+              +91 98765 43210
+            </a>
+            <span>Rishikesh, Uttarakhand</span>
+          </div>
 
-          <Card
-            hover={false}
-            className="h-full bg-[#EEE7DD] p-8"
-          >
-
-            <h3 className="font-serif text-3xl font-semibold text-[#1F1F1F]">
-              Get in Touch
-            </h3>
-
-            <p className="mt-4 text-[17px] leading-relaxed text-[#6B6B6B]">
-              Feel free to reach out for collaborations, yoga classes,
-              retreats, workshops, or any wellness-related inquiries.
-            </p>
-
-            <div className="mt-8 space-y-6">
-
-              {contactInfo.map((item, index) => {
-
-                const Icon = item.icon;
-
-                return (
-
-                  <div
-                    key={index}
-                    className="flex items-start gap-4"
-                  >
-
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white">
-
-                      <Icon
-                        size={18}
-                        className="text-[#8C6A43]"
-                      />
-
-                    </div>
-
-                    <div>
-
-                      <h4 className="text-sm font-semibold text-[#1F1F1F]">
-                        {item.title}
-                      </h4>
-
-                      <p className="mt-0.5 text-[17px] text-[#6B6B6B]">
-                        {item.value}
-                      </p>
-
-                    </div>
-
-                  </div>
-
-                );
-
-              })}
-
-            </div>
-
-          </Card>
-
-          {/* Contact Form */}
-
-          <Card
-            hover={false}
-            className="p-8"
-          >
-
-            <form className="space-y-5">
-
-              <input
-                type="text"
-                placeholder="Your Name"
-                className="w-full rounded-2xl border border-[#DDD6CB] bg-[#FAF9F7] px-5 py-3.5 text-[17px] outline-none transition-colors duration-200 focus:border-[#8C6A43]"
-              />
-
-              <input
-                type="email"
-                placeholder="Email Address"
-                className="w-full rounded-2xl border border-[#DDD6CB] bg-[#FAF9F7] px-5 py-3.5 text-[17px] outline-none transition-colors duration-200 focus:border-[#8C6A43]"
-              />
-
-              <input
-                type="text"
-                placeholder="Subject"
-                className="w-full rounded-2xl border border-[#DDD6CB] bg-[#FAF9F7] px-5 py-3.5 text-[17px] outline-none transition-colors duration-200 focus:border-[#8C6A43]"
-              />
-
-              <textarea
-                rows={5}
-                placeholder="Tell me about your goals..."
-                className="w-full resize-none rounded-2xl border border-[#DDD6CB] bg-[#FAF9F7] px-5 py-3.5 text-[17px] outline-none transition-colors duration-200 focus:border-[#8C6A43]"
-              />
-
-              <Button className="w-full">
-
-                Send Message
-
-                <ArrowRight size={16} />
-
-              </Button>
-
-            </form>
-
-          </Card>
-
+          <div className="mt-8">
+            <a href="mailto:hello@yogaportfolio.com" className="yoga-dark-cta">
+              <span>Send a booking request</span>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path
+                  d="M5 13L13 5M13 5H6M13 5V12"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
+          </div>
         </div>
 
+        <img
+          src={groupYoga}
+          alt="Group yoga class"
+          className="h-[58svh] w-full rounded-lg object-cover"
+        />
       </Container>
     </Section>
   );

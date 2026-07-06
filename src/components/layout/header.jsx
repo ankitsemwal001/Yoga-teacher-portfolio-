@@ -1,76 +1,90 @@
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useState } from "react";
+
+const navItems = ["About", "Services", "Experience", "Gallery", "Contact"];
 
 const Header = () => {
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-    const navItems = ['About', 'Services', 'Experience', 'Gallery', 'Contact'];
+  const closeMenu = () => setIsOpen(false);
 
-    return (
-        <header className="fixed top-0 left-0 z-50 w-full border-b border-[#DDD6CB] bg-[#F8F6F2]/90 backdrop-blur-md">
-            <div className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-6 lg:px-10">
+  return (
+    <>
+      <div className="fixed left-0 top-7 z-50 flex w-1/2 items-center pl-5 mix-blend-difference md:top-10 md:pl-10">
+        <a
+          href="#home"
+          className="font-serif text-2xl font-semibold text-white"
+          aria-label="Breathe Yoga home"
+        >
+          Breathe
+        </a>
+      </div>
 
-                <a
-                    href="/"
-                    className="font-serif text-xl font-semibold tracking-tight text-[#1F1F1F] transition-opacity hover:opacity-80"
-                >
-                    Yoga Portfolio
-                </a>
+      <div className="fixed right-0 top-4 z-50 flex w-1/2 justify-end pr-5 md:top-7 md:pr-10">
+        <button
+          type="button"
+          className={`yoga-burger ${isOpen ? "open" : ""}`}
+          onClick={() => setIsOpen((value) => !value)}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
+        >
+          <span />
+          <span />
+        </button>
+      </div>
 
-                {/* Desktop Navigation */}
-                <nav className="hidden items-center gap-8 md:flex">
-                    {navItems.map((item) => (
-                        <a
-                            key={item}
-                            href={`#${item.toLowerCase()}`}
-                            className="text-sm font-medium text-[#1F1F1F] transition-all duration-300 hover:-translate-y-0.5 hover:text-[#8C6A43]"
-                        >
-                            {item}
-                        </a>
-                    ))}
-                </nav>
-
-                <div className="hidden md:block">
-                    <button className="rounded-full bg-[#8C6A43] px-5 py-2.5 text-sm font-medium text-white transition-colors duration-200 hover:bg-[#755632]">
-                        Book Session
-                    </button>
-                </div>
-
-                {/* Mobile Menu Toggle */}
-                <button 
-                    className="text-[#1F1F1F] transition-colors hover:text-[#8C6A43] md:hidden"
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    aria-label="Toggle menu"
-                    aria-expanded={isMobileMenuOpen}
-                >
-                    {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
-            </div>
-
-            {/* Mobile Navigation Dropdown */}
-            <div 
-                className={`overflow-hidden transition-all duration-300 ease-in-out md:hidden ${
-                    isMobileMenuOpen ? 'max-h-96 border-t border-[#DDD6CB] opacity-100' : 'max-h-0 opacity-0'
-                }`}
+      <div className={`yoga-menu-panel ${isOpen ? "open" : ""}`}>
+        <nav className="flex flex-col gap-2">
+          {navItems.map((item) => (
+            <a
+              key={item}
+              href={`#${item.toLowerCase()}`}
+              onClick={closeMenu}
+              className="font-serif text-4xl font-medium leading-tight text-[#F4F1E8] transition-opacity hover:opacity-70 md:text-[42px]"
             >
-                <nav className="flex flex-col items-center gap-5 bg-[#F8F6F2] py-6 shadow-lg">
-                    {navItems.map((item) => (
-                        <a
-                            key={item}
-                            href={`#${item.toLowerCase()}`}
-                            onClick={() => setIsMobileMenuOpen(false)}
-                            className="text-base font-medium text-[#1F1F1F] transition-colors duration-200 hover:text-[#8C6A43]"
-                        >
-                            {item}
-                        </a>
-                    ))}
-                    <button className="mt-2 rounded-full bg-[#8C6A43] px-6 py-2.5 text-sm font-medium text-white transition-colors duration-200 hover:bg-[#755632]">
-                        Book Session
-                    </button>
-                </nav>
-            </div>
-        </header>
-    );
+              {item}
+            </a>
+          ))}
+        </nav>
+
+        <div className="mt-10">
+          <a
+            href="mailto:hello@yogaportfolio.com"
+            className="text-lg text-[#9A9590] transition-colors hover:text-[#F4F1E8] md:text-xl"
+          >
+            hello@yogaportfolio.com
+          </a>
+
+          <div className="mt-5 flex gap-6">
+            <a href="#gallery" onClick={closeMenu} className="yoga-menu-link">
+              Instagram
+            </a>
+            <a href="#services" onClick={closeMenu} className="yoga-menu-link">
+              Classes
+            </a>
+            <a href="#contact" onClick={closeMenu} className="yoga-menu-link">
+              Book
+            </a>
+          </div>
+        </div>
+
+        <a href="#contact" onClick={closeMenu} className="yoga-menu-cta">
+          <span className="yoga-menu-cta-bg" />
+          <span className="yoga-menu-cta-text">Book a session</span>
+          <span className="yoga-menu-cta-circle" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 18 18" fill="none">
+              <path
+                d="M5 13L13 5M13 5H6M13 5V12"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </span>
+        </a>
+      </div>
+    </>
+  );
 };
 
 export default Header;

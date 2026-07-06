@@ -1,91 +1,50 @@
 import image2 from "../../public/assets/image2.png";
 
-import Section from "../ui/section";
 import Container from "../ui/container";
-import SectionHeading from "../ui/sectionHeading";
-import Card from "../ui/card";
+import Section from "../ui/section";
 
 const About = () => {
-    return (
-        <Section
-            id="about"
-            background="bg-[#EEE7DD]"
-        >
-            <Container>
+  return (
+    <Section id="about" background="bg-[#F4F1E8]" className="relative overflow-hidden">
+      <div
+        className="pointer-events-none absolute -bottom-10 right-0 font-serif text-[18vw] leading-none text-black/[0.06]"
+        aria-hidden="true"
+      >
+        PRESENCE
+      </div>
 
-                <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
+      <Container className="relative grid min-h-[92svh] items-center gap-10 py-20 md:grid-cols-[0.9fr_1.1fr]">
+        <div className="overflow-hidden rounded-lg">
+          <img
+            src={image2}
+            alt="Yoga teacher in a calm practice space"
+            className="h-[58svh] w-full object-cover md:h-[72svh]"
+          />
+        </div>
 
-                    {/* Image */}
+        <div className="md:pl-8">
+          <p className="mb-5 text-xs font-semibold uppercase tracking-normal text-[#397F92]">
+            About the practice
+          </p>
 
-                    <div className="hidden w-full md:block">
+          <h2 className="font-serif text-[42px] font-medium leading-none text-[#111111] sm:text-6xl lg:text-[78px]">
+            Purposeful yoga, taught with breath and presence.
+          </h2>
 
-                        <img
-                            src={image2}
-                            alt="Professional Yoga Teacher"
-                            className="aspect-[4/5] w-full rounded-2xl object-cover lg:aspect-auto lg:h-full"
-                        />
-
-                    </div>
-
-                    {/* Content */}
-
-                    <div className="flex flex-col justify-between py-1">
-
-                        <div>
-
-                            <SectionHeading
-                                align="left"
-                                title="Sharing the Practice of Yoga with Purpose & Presence"
-                                description="Yoga is more than movement—it's a lifelong journey of self-awareness, balance, and mindful living."
-                            />
-
-                            <div className="mt-6 space-y-4">
-
-                                <p className="text-base leading-relaxed text-[#6B6B6B]">
-                                    Through years of teaching and continuous learning,
-                                    I have guided students of all levels to build
-                                    strength, improve flexibility, reduce stress,
-                                    and cultivate inner peace through mindful practice.
-                                </p>
-
-                                <p className="text-base leading-relaxed text-[#6B6B6B]">
-                                    My teaching combines traditional yoga philosophy
-                                    with modern wellness practices, creating sessions
-                                    that are welcoming, accessible, and deeply
-                                    transformative for every student.
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                        {/* Philosophy Card */}
-
-                        <Card
-                            hover={false}
-                            className="p-6 mt-8"
-                        >
-
-                            <h3 className="font-serif text-lg text-[#1F1F1F] tracking-tight">
-                                Teaching Philosophy
-                            </h3>
-
-                            <p className="mt-2 text-base leading-relaxed text-[#6B6B6B]">
-                                Every student is unique. My goal is to create
-                                a calm, supportive environment where people
-                                can grow physically, mentally, and spiritually
-                                at their own pace.
-                            </p>
-
-                        </Card>
-
-                    </div>
-
-                </div>
-
-            </Container>
-        </Section>
-    );
+          <div className="mt-8 grid gap-5 border-y border-black/10 py-7 text-[17px] leading-relaxed text-[#55524D] md:grid-cols-2">
+            <p>
+              Years of practice and teaching shape sessions that build
+              strength, flexibility, calm and inner awareness.
+            </p>
+            <p>
+              Traditional yoga philosophy meets modern wellness in a supportive
+              space where students move at their own pace.
+            </p>
+          </div>
+        </div>
+      </Container>
+    </Section>
+  );
 };
 
 export default About;

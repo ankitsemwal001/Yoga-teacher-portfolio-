@@ -9,11 +9,10 @@ const Card = ({
     <article
       className={`
         overflow-hidden
-        rounded-3xl
+        rounded-lg
         bg-white
         border
-        border-[#E6DFD5]
-        shadow-sm
+        border-black/10
         transition-all
         duration-500
         ${

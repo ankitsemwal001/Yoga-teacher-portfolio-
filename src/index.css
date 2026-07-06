@@ -1,11 +1,550 @@
 @import "tailwindcss";
 
-
-html, body {
-  background-color: #F8F6F2;
+html,
+body {
+  background-color: #e4e4e4;
+  color: #111111;
   overflow-x: hidden;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+/* hero section */
+/* ========================================
+   YOGA HERO
+======================================== */
+
+.yoga-hero {
+  --spotlight-x: 65%;
+  --spotlight-y: 50%;
+}
+
+.yoga-hero-image {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Base image: soft, warm and desaturated */
+.yoga-hero-base-image {
+  z-index: 1;
+  opacity: 0;
+  filter: grayscale(0.9) sepia(0.2) brightness(0.72);
+  transform: scale(1.25) rotate(2deg);
+  animation: yogaImageEntrance 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.75s
+    forwards;
+}
+
+/* Full-colour image visible around the cursor */
+.yoga-hero-reveal-image {
+  z-index: 2;
+  pointer-events: none;
+
+  -webkit-mask-image: radial-gradient(
+    circle 250px at var(--spotlight-x) var(--spotlight-y),
+    #000 0%,
+    #000 35%,
+    rgba(0, 0, 0, 0.75) 52%,
+    rgba(0, 0, 0, 0.25) 70%,
+    transparent 100%
+  );
+
+  mask-image: radial-gradient(
+    circle 250px at var(--spotlight-x) var(--spotlight-y),
+    #000 0%,
+    #000 35%,
+    rgba(0, 0, 0, 0.75) 52%,
+    rgba(0, 0, 0, 0.25) 70%,
+    transparent 100%
+  );
+
+  transition:
+    -webkit-mask-position 100ms linear,
+    mask-position 100ms linear;
+}
+
+/* ========================================
+   SPLASH INTRO
+======================================== */
+
+.yoga-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  pointer-events: none;
+  animation: yogaSplashHide 0.25s ease 1.45s forwards;
+}
+
+.yoga-splash-row {
+  display: flex;
+  height: 50%;
+  width: 100%;
+}
+
+.yoga-splash-box {
+  display: block;
+  height: 100%;
+  width: 20%;
+  background: #75c5de;
+}
+
+/* ========================================
+   REFERENCE-STYLE MENU
+======================================== */
+
+.yoga-burger {
+  display: flex;
+  width: 59px;
+  height: 59px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+  border: 0;
+  border-radius: 9999px;
+  background: #f4f1e8;
+  transition: background 0.35s ease;
+}
+
+.yoga-burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #111111;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+.yoga-burger:hover,
+.yoga-burger.open {
+  background: #0b0b0b;
+}
+
+.yoga-burger:hover span,
+.yoga-burger.open span {
+  background: #f4f1e8;
+}
+
+.yoga-burger.open span:first-child {
+  transform: rotate(45deg) translate(2px, 2px);
+}
+
+.yoga-burger.open span:last-child {
+  transform: rotate(-45deg) translate(2px, -2px);
+}
+
+.yoga-menu-panel {
+  position: fixed;
+  z-index: 40;
+  top: -620px;
+  right: 8px;
+  left: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 90px 32px 32px;
+  border-radius: 20px;
+  background: rgba(17, 17, 17, 0.95);
+  opacity: 0;
+  pointer-events: none;
+  backdrop-filter: blur(26px);
+  transition:
+    top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.35s ease;
+}
+
+.yoga-menu-panel.open {
+  top: 8px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.yoga-menu-link {
+  color: #9a9590;
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.3s ease;
+}
+
+.yoga-menu-link:hover {
+  color: #f4f1e8;
+}
+
+.yoga-menu-cta,
+.yoga-menu-cta:visited {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: max-content;
+  margin-top: 32px;
+  overflow: hidden;
+  padding: 6px;
+  border-radius: 9999px;
+  text-decoration: none;
+}
+
+.yoga-menu-cta-bg {
+  position: absolute;
+  inset: 5px auto 5px 8px;
+  z-index: 0;
+  width: calc(100% - 62px);
+  border-radius: 9999px;
+  background: #ffffff;
+  transition: width 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.yoga-menu-cta:hover .yoga-menu-cta-bg {
+  width: calc(100% - 12px);
+}
+
+.yoga-menu-cta-text {
+  position: relative;
+  z-index: 1;
+  padding: 8px 34px;
+  color: #111111;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.yoga-menu-cta-circle {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 50%;
+  background: #75c5de;
+  color: #ffffff;
+  transition: transform 0.3s ease;
+}
+
+.yoga-menu-cta:hover .yoga-menu-cta-circle {
+  transform: translateX(-4px);
+}
+
+.yoga-mini-arrow {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  place-items: center;
+  border-radius: 9999px;
+  background: #75c5de;
+  color: #ffffff;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.yoga-mini-arrow:hover {
+  transform: rotate(45deg);
+  background: #f4f1e8;
+  color: #111111;
+}
+
+.yoga-dark-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  border-radius: 9999px;
+  background: #111111;
+  color: #f4f1e8;
+  padding: 16px 20px 16px 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+.yoga-dark-cta:hover {
+  transform: translateY(-2px);
+  background: #f4f1e8;
+  color: #111111;
+}
+
+@media (min-width: 768px) {
+  .yoga-menu-panel {
+    left: auto;
+    width: 420px;
+    padding: 60px;
+  }
+}
+
+.yoga-splash-top .yoga-splash-box {
+  animation: yogaSplashTop 1.1s cubic-bezier(0.96, -0.02, 0.38, 1.01) forwards;
+}
+
+.yoga-splash-bottom .yoga-splash-box {
+  animation: yogaSplashBottom 1.1s cubic-bezier(0.96, -0.02, 0.38, 1.01)
+    forwards;
+}
+
+@keyframes yogaSplashTop {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-102%);
+  }
+}
+
+@keyframes yogaSplashBottom {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(102%);
+  }
+}
+
+@keyframes yogaSplashHide {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* ========================================
+   IMAGE AND TEXT ENTRANCE
+======================================== */
+
+@keyframes yogaImageEntrance {
+  from {
+    opacity: 0;
+    transform: scale(1.25) rotate(2deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+.yoga-word-reveal {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(12px);
+  transform: translateY(18px);
+  animation: yogaWordReveal 0.55s ease forwards;
+}
+
+@keyframes yogaWordReveal {
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+.yoga-eyebrow,
+.yoga-description {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: yogaContentReveal 0.7s ease forwards;
+}
+
+.yoga-eyebrow {
+  animation-delay: 1s;
+}
+
+.yoga-description {
+  animation-delay: 1.65s;
+}
+
+@keyframes yogaContentReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   LARGE BREATHE TEXT
+======================================== */
+
+.yoga-wordmark {
+  overflow: hidden;
+}
+
+.yoga-wordmark span {
+  display: block;
+  color: rgba(248, 244, 234, 0.76);
+  font-family: serif;
+  font-size: clamp(90px, 18vw, 320px);
+  font-weight: 500;
+  line-height: 0.78;
+  letter-spacing: 0;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(110%);
+  animation: yogaWordmarkReveal 1.1s cubic-bezier(0.16, 1, 0.3, 1) 1.35s
+    forwards;
+}
+
+@keyframes yogaWordmarkReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   CTA BUTTON
+======================================== */
+
+.yoga-cta-wrapper {
+  display: inline-flex;
+  opacity: 0;
+  transform: translateY(45px) scale(0.65);
+  animation: yogaCtaReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.8s forwards;
+}
+
+@keyframes yogaCtaReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.yoga-cta {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+  border-radius: 9999px;
+  padding: 7px;
+  text-decoration: none;
+}
+
+.yoga-cta-background {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 7px;
+  z-index: 0;
+  width: calc(100% - 72px);
+  border-radius: 9999px;
+  background: #f8f4ea;
+  transition: width 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.yoga-cta-text {
+  position: relative;
+  z-index: 1;
+  padding: 14px 28px;
+  color: #1f251f;
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.yoga-cta-circle {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  height: 50px;
+  width: 50px;
+  flex-shrink: 0;
+  place-items: center;
+  border-radius: 9999px;
+  background: #75c5de;
+  color: #ffffff;
+  transition: transform 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.yoga-cta:hover .yoga-cta-background {
+  width: calc(100% - 14px);
+}
+
+.yoga-cta:hover .yoga-cta-circle {
+  transform: translateX(-6px) rotate(45deg);
+}
+
+/* ========================================
+   STATS ENTRANCE
+======================================== */
+
+.yoga-stats {
+  opacity: 0;
+  transform: translateY(35px);
+  animation: yogaStatsReveal 0.8s ease 2s forwards;
+}
+
+@keyframes yogaStatsReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 767px) {
+  .yoga-hero-image {
+    background-position: 62% center;
+  }
+
+  .yoga-hero-reveal-image {
+    -webkit-mask-image: radial-gradient(
+      circle 170px at var(--spotlight-x) var(--spotlight-y),
+      #000 0%,
+      #000 32%,
+      rgba(0, 0, 0, 0.6) 55%,
+      transparent 100%
+    );
+
+    mask-image: radial-gradient(
+      circle 170px at var(--spotlight-x) var(--spotlight-y),
+      #000 0%,
+      #000 32%,
+      rgba(0, 0, 0, 0.6) 55%,
+      transparent 100%
+    );
+  }
+
+  .yoga-wordmark span {
+    font-size: clamp(82px, 27vw, 180px);
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .yoga-splash {
+    display: none;
+  }
+
+  .yoga-hero-base-image,
+  .yoga-word-reveal,
+  .yoga-eyebrow,
+  .yoga-description,
+  .yoga-wordmark span,
+  .yoga-cta-wrapper,
+  .yoga-stats {
+    animation: none;
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
 }

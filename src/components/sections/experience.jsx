@@ -1,112 +1,65 @@
 import experience1 from "../../public/assets/experience1.png";
 import experience2 from "../../public/assets/experience2.png";
-import groupYoga from "../../public/assets/group-yoga.png";
-import retreat from "../../public/assets/retreat.png";
 
-import Section from "../ui/section";
 import Container from "../ui/container";
-import SectionHeading from "../ui/sectionHeading";
+import Section from "../ui/section";
 
-const experiences = [
-  {
-    year: "2014",
-    title: "Yoga Journey Began",
-    description:
-      "Started practicing traditional yoga and meditation, discovering the path of mindfulness, discipline, and holistic living.",
-    image: experience1,
-  },
-  {
-    year: "2017",
-    title: "Certified Yoga Teacher",
-    description:
-      "Completed professional Yoga Teacher Training and began helping students build healthier bodies and calmer minds.",
-    image: experience2,
-  },
-  {
-    year: "2020",
-    title: "Wellness Retreats",
-    description:
-      "Started leading retreats, workshops, and mindfulness programs focused on physical health, breathwork, and inner peace.",
-    image: retreat,
-  },
-  {
-    year: "Today",
-    title: "Teaching & Inspiring",
-    description:
-      "Continuing to guide students through yoga, meditation, and wellness practices while building a growing yoga community.",
-    image: groupYoga,
-  },
+const milestones = [
+  ["2014", "Yoga journey began"],
+  ["2017", "Certified yoga teacher"],
+  ["2020", "Retreats and workshops"],
+  ["Today", "Teaching and inspiring"],
 ];
 
 const Experience = () => {
   return (
-    <Section
-      id="experience"
-      background="bg-[#EEE7DD]"
-    >
-      <Container>
+    <Section id="experience" background="bg-[#E4E4E4]" className="relative overflow-hidden">
+      <div
+        className="pointer-events-none absolute bottom-0 left-0 font-serif text-[19vw] leading-none text-black/[0.06]"
+        aria-hidden="true"
+      >
+        JOURNEY
+      </div>
 
-        <SectionHeading
-          title="My Yoga Journey"
-          description="Every milestone reflects years of dedication, continuous learning, and a passion for helping others experience the true essence of yoga."
-        />
+      <Container className="relative grid min-h-[94svh] gap-10 py-20 lg:grid-cols-[1fr_0.8fr] lg:items-center lg:py-28">
+        <div>
+          <p className="mb-5 text-xs font-semibold uppercase tracking-normal text-[#397F92]">
+            Experience
+          </p>
 
-        <div className="relative mt-16">
+          <h2 className="font-serif text-[42px] font-medium leading-none text-[#111111] sm:text-6xl lg:text-[82px]">
+            Years of practice shaped into grounded teaching.
+          </h2>
 
-          {/* Timeline line */}
-
-          <div className="absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-[#D8D1C6] lg:block" />
-
-          {experiences.map((item, index) => (
-
-            <div
-              key={index}
-              className={`relative ${index !== experiences.length - 1 ? "mb-20" : ""
-                } grid items-start gap-12 lg:grid-cols-2 ${index % 2
-                  ? "lg:[&>*:first-child]:order-2"
-                  : ""
-                }`}
-            >
-
-              {/* Center Timeline Dot */}
-              <div className="absolute left-1/2 top-2 hidden h-3 w-3 -translate-x-1/2 rounded-full bg-[#8C6A43] ring-4 ring-[#EEE7DD] lg:block" />
-
-              {/* Image */}
-
-              <div className="group overflow-hidden rounded-3xl">
-
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="aspect-square md:aspect-video w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-
-              </div>
-
-              {/* Content */}
-
-              <div className="relative">
-
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#8C6A43]">
-                  {item.year}
+          <div className="mt-10 grid border-y border-black/10 md:grid-cols-2">
+            {milestones.map(([year, title]) => (
+              <div
+                key={year}
+                className="border-b border-black/10 py-5 md:border-r md:px-5 md:even:border-r-0"
+              >
+                <span className="text-sm font-semibold text-[#397F92]">
+                  {year}
                 </span>
-
-                <h3 className="mt-3 font-serif text-3xl font-semibold leading-tight text-[#1F1F1F]">
-                  {item.title}
-                </h3>
-
-                <p className="mt-4 max-w-md text-[17px] leading-relaxed text-[#6B6B6B]">
-                  {item.description}
+                <p className="mt-3 font-serif text-2xl text-[#111111]">
+                  {title}
                 </p>
-
               </div>
-
-            </div>
-
-          ))}
-
+            ))}
+          </div>
         </div>
 
+        <div className="grid gap-4">
+          <img
+            src={experience1}
+            alt="Yoga practice outdoors"
+            className="h-64 w-full rounded-lg object-cover md:h-80"
+          />
+          <img
+            src={experience2}
+            alt="Yoga teacher guiding practice"
+            className="ml-auto h-52 w-4/5 rounded-lg object-cover md:h-64"
+          />
+        </div>
       </Container>
     </Section>
   );
