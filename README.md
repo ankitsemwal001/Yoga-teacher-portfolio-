@@ -130,7 +130,7 @@ screenshots/
 
 **Live Website**
 
-> https://your-live-demo-link.com
+> yoga-teacher-portfolio.vercel.app
 
 ---
 
